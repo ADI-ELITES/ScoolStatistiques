@@ -10,10 +10,13 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="my-4">
-                        <h2 class="text-xl text-bold my-2">Données statistique des parents</h2>
+                        <h2 class="font-semibold leading-6 my-2">Données statistique des parents</h2>
                         @livewire(\App\Livewire\EleveOverView::class)
                     </div>
-                    <canvas id="myChart"></canvas>
+                    <div class="my-4">
+                        @livewire(\App\Livewire\ElevesChart::class)
+                    </div>
+                    {{-- <canvas id="myChart"></canvas> --}}
                 </div>
             </div>
         </div>
