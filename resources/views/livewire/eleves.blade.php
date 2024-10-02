@@ -109,7 +109,7 @@ class extends Component implements HasForms, HasTable {
         <div x-show="showModal" class="fixed inset-0 z-50 flex items-center justify-center">
             <div class="absolute inset-0 bg-black opacity-50" @click="showModal = false"></div>
             <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div class="flex min-h-full bg-gray-400 items-end justify-center p-4 sm:items-center sm:p-0">
+                <div class="flex min-h-full bg-gray-100 items-end justify-center p-4 sm:items-center sm:p-0">
                     <form wire:submit="save">
                         <div>
                             <div class="grid grid-cols-3 gap-4">
