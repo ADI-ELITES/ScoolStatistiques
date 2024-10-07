@@ -10,7 +10,7 @@ class Eleve extends Model
     use HasFactory;
 
     protected $fillable = [
-        'matric', 'nom', 'prenom', 'sexe', 'datenais', 'phoneeleve', 'nompar', 'prenpar', 'profespar', 'phonepar',
+        'matric', 'nom', 'prenom', 'sexe', 'datenais', 'phoneeleve', 'nompar', 'prenpar', 'sexepar', 'profespar', 'phonepar',
     ];
 
     protected $primary_key = 'id';

@@ -24,6 +24,7 @@ class EleveFactory extends Factory
             'phoneeleve' => $this->faker->phoneNumber(), // Numéro de téléphone aléatoire
             'nompar' => $this->faker->lastName(), // Nom du parent aléatoire
             'prenpar' => $this->faker->firstName(), // Prénom du parent aléatoire
+            'sexepar' => $this->faker->randomElement(['M', 'F']), // Sexe aléatoire, M ou F
             'profespar' => $this->faker->jobTitle(), // Profession aléatoire
             'phonepar' => $this->faker->phoneNumber(), // Numéro de téléphone du parent aléatoire
         ];

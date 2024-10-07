@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('eleves', function (Blueprint $table) {
             $table->id();
-            $table->string('matric', 14);
+            $table->string('matric', 30);
             $table->string('nom', 25);
             $table->string('prenom', 25);
             $table->string('sexe', 1);
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('prenpar', 100);
             $table->string('profespar', 50); // 20
             $table->string('phonepar', 15);
+            $table->string('sexepar', 1);
             $table->timestamps();
             $table->softDeletes();
         });

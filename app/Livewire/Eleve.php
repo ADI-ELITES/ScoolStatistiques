@@ -30,6 +30,7 @@ class Eleve extends Component implements HasForms, HasTable
                 TextColumn::make('phoneeleve'),
                 TextColumn::make('nompar'),
                 TextColumn::make('prenpar'),
+                TextColumn::make('sexepar'),
                 TextColumn::make('profespar'),
                 TextColumn::make('phonepar'),
             ])
