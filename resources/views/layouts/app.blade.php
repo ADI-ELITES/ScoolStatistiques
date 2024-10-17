@@ -34,6 +34,7 @@
                 {{ $slot }}
             </main>
 
+            @livewire('notifications')
             @filamentScripts
             @livewireScripts
             @vite(['resources/js/app.js'])

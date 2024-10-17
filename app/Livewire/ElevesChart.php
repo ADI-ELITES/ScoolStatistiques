@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Eleve;
 use Filament\Widgets\ChartWidget;
+use Flowframe\Trend\Trend;
+use Flowframe\Trend\TrendValue;
 
 class ElevesChart extends ChartWidget
 {
@@ -16,6 +18,9 @@ class ElevesChart extends ChartWidget
         // Récupérer les professions des parents et le nombre d'occurrences pour chaque profession
         $professionStats = Eleve::selectRaw('profespar, COUNT(*) as total')
             ->groupBy('profespar')
+            ->havingRaw('COUNT(*) > ?', [10])
+            //->orderBy('total', 'desc') // Trier par le total en ordre décroissant
+            //->limit(10) // Limiter aux 10 premiers résultats
             ->get();
 
         // Extraire les labels (professions) et les données (nombre de chaque profession)
