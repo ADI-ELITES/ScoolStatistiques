@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Eleve extends Model
+class Note extends Model
 {
     use HasFactory;
 
@@ -14,17 +14,11 @@ class Eleve extends Model
         'serie',
         'codeclas',
         'matric',
-        'nom',
-        'prenom',
-        'sexe',
-        'datenais',
-        'phoneeleve',
-        'nompar',
-        'prenpar',
-        'sexepar',
-        'profespar',
-        'phonepar',
+        'periode',
+        'matiere',
+        'devoir01',
+        'devoir02',
+        'devoir03',
+        'compos',
     ];
-
-    //protected $primary_key = 'id';
 }
