@@ -14,7 +14,6 @@ class Matiere extends Model
         'serie',
         'codeclas',
         'nomatiere',
-        'nomatiere',
         'nomprof',
     ];
 }

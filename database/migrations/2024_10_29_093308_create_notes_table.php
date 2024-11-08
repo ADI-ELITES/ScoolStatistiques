@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
             $table->string('niveau', 4);
             $table->string('serie', 4);
             $table->string('codeclas', 1);
@@ -31,7 +31,11 @@ return new class extends Migration {
                 ->on('eleves')
                 ->onDelete('cascade');
 
-            $table->foreign('matiere')->references('nomatiere')->on('matieres')->onDelete('cascade');
+            // Clé étrangère composite vers la table `matieres`
+            $table->foreign(['niveau', 'serie', 'codeclas', 'matiere'])
+                ->references(['niveau', 'serie', 'codeclas', 'nomatiere'])
+                ->on('matieres')
+                ->onDelete('cascade');
         });
     }
 

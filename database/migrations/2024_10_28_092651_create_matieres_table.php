@@ -11,11 +11,11 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('matieres', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
             $table->string('niveau', 4);
             $table->string('serie', 4);
             $table->string('codeclas', 1);
-            $table->string('nomatiere', 25)->unique();
+            $table->string('nomatiere', 25);
             $table->string('nomprof', 25);
             $table->timestamps();
             $table->primary(['niveau', 'serie', 'codeclas', 'nomatiere']);

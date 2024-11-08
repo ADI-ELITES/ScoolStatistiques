@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
+    public function validateToken(Request $request)
+    {
+        // Vérifie si l'utilisateur est authentifié
+        if (Auth::check()) {
+            return response()->json(['valid' => true], 200);
+        } else {
+            return response()->json(['valid' => false, 'message' => 'Token expiré ou invalide'], 401);
+        }
+    }
+
     //  Authentification d'un user
     public function login(Request $request)
     {
