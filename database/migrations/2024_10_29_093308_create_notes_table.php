@@ -18,10 +18,10 @@ return new class extends Migration {
             $table->string('matric', 14);
             $table->string('periode', 2);
             $table->string('matiere', 25);
-            $table->integer('devoir01');
-            $table->integer('devoir02');
-            $table->integer('devoir03');
-            $table->integer('compos');
+            $table->float('devoir01');
+            $table->float('devoir02');
+            $table->float('devoir03');
+            $table->float('compos');
             $table->timestamps();
             $table->primary(['niveau', 'serie', 'codeclas', 'matric', 'periode', 'matiere']);
 

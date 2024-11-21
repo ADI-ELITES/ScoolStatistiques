@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\User;
+use Illuminate\Validation\Rules;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
+
 class AuthController extends Controller
 {
 
@@ -31,6 +36,27 @@ class AuthController extends Controller
         if (!Auth::attempt($attrs)) {
             return response(['message' => 'Invalid credentials.'], 403);
         }
+
+        //  return user & token in response
+        return response()->json([
+            'user' => auth()->user(),
+            'token' => auth()->user()->createToken('secret')->plainTextToken
+        ]);
+    }
+
+    public function register(Request $request)
+    {
+        $attrs = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $attrs['password'] = Hash::make($attrs['password']);
+
+        event(new Registered($user = User::create($attrs)));
+
+        Auth::login($user);
 
         //  return user & token in response
         return response()->json([

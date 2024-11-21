@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('niveau', 4);
             $table->string('serie', 4);
             $table->string('codeclas', 1);
+            $table->string('periode', 2);
             $table->string('proftitul', 25);
             $table->primary(['niveau', 'serie', 'codeclas']);
             $table->timestamps();

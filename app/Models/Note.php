@@ -21,4 +21,7 @@ class Note extends Model
         'devoir03',
         'compos',
     ];
+
+    protected $primaryKey = ['niveau', 'serie', 'codeclas', 'matric', 'periode', 'matiere'];
+    public $incrementing = false;
 }

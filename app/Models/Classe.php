@@ -10,6 +10,6 @@ class Classe extends Model
     use HasFactory;
 
     protected $fillable = [
-        'niveau', 'serie', 'codeclas', 'proftitul'
+        'niveau', 'serie', 'codeclas', 'periode', 'proftitul'
     ];
 }
