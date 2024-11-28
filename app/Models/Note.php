@@ -24,4 +24,11 @@ class Note extends Model
 
     protected $primaryKey = ['niveau', 'serie', 'codeclas', 'matric', 'periode', 'matiere'];
     public $incrementing = false;
+
+    protected $casts = [
+        'devoir01' => 'float',
+        'devoir02' => 'float',
+        'devoir03' => 'float',
+        'compos' => 'float',
+    ];
 }

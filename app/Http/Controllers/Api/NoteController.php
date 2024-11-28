@@ -32,6 +32,13 @@ class NoteController extends Controller
             ->where('matiere', $attrs['matiere'])
             ->first();
 
+        if (!$note) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Aucune note trouvée pour ces critères.',
+            ], 404);
+        }
+
         return response()->json(
             $note
         );
@@ -39,7 +46,7 @@ class NoteController extends Controller
 
     public function saveEleveNoteInMatiere(Request $request)
     {
-        // Valider les champs de la requête
+        // Validation des données
         $attrs = $request->validate([
             'niveau' => 'required',
             'serie' => 'required',
@@ -53,30 +60,40 @@ class NoteController extends Controller
             'compos' => 'required|numeric|between:0,20',
         ]);
 
-        // Compléter le nom de la matière à 20 caractères si nécessaire
-        $matiere = str_pad($attrs['matiere'], 20, ' ');
-
-        // Vérifier et ajuster la série (si nécessaire)
-        $serie = $attrs['serie'] === "CEG" ? $attrs['serie'] . ' ' : $attrs['serie'];
-
-        // Utiliser updateOrCreate pour mettre à jour ou créer une note
-        $note = Note::updateOrCreate(
-            [
+        try {
+            // Supprimer la note existante avec les mêmes clés, si elle existe
+            Note::where([
                 'niveau' => $attrs['niveau'],
-                'serie' => $serie,
+                'serie' => $attrs['serie'],
                 'codeclas' => $attrs['codeclas'],
                 'matric' => $attrs['matric'],
                 'periode' => $attrs['periode'],
-                'matiere' => $matiere,
-            ],
-            [
+                'matiere' => $attrs['matiere'],
+            ])->delete();
+
+            // Créer une nouvelle note
+            $note = Note::create([
+                'niveau' => $attrs['niveau'],
+                'serie' => $attrs['serie'],
+                'codeclas' => $attrs['codeclas'],
+                'matric' => $attrs['matric'],
+                'periode' => $attrs['periode'],
+                'matiere' => $attrs['matiere'],
                 'devoir01' => (float) $attrs['devoir01'],
                 'devoir02' => (float) $attrs['devoir02'],
                 'devoir03' => (float) $attrs['devoir03'],
                 'compos' => (float) $attrs['compos'],
-            ]
-        );
+            ]);
 
-        return response()->json($note, 201);
+            return response()->json($note, 201);
+        } catch (\Exception $e) {
+            // Gérer les erreurs et retourner une réponse utile
+            return response()->json([
+                'error' => 'Une erreur est survenue lors de l\'enregistrement de la note.',
+                'details' => $e->getMessage(),
+            ], 500);
+        }
     }
+
+
 }

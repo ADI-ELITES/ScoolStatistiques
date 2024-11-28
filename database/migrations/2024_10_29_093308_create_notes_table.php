@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->float('devoir03');
             $table->float('compos');
             $table->timestamps();
-            $table->primary(['niveau', 'serie', 'codeclas', 'matric', 'periode', 'matiere']);
+            $table->primary(['niveau', 'serie', 'codeclas', 'matric', 'periode', 'matiere'])->unique();
 
             // Définir une clé étrangère composite en utilisant `foreign`, `references` et `on`
             $table->foreign(['niveau', 'serie', 'codeclas', 'matric'])

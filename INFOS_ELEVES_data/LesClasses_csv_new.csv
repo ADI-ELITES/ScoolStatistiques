@@ -1,11 +1,11 @@
 niveau;serie;codeclas;periode;proftitul
-6EME;CEG ;A;S1;LARE                     
-6EME;CEG ;B;S1;ADAM                     
-6EME;CEG ;C;S1;BEYELI                   
-5EME;CEG ;A;S1;ALAYI                    
-5EME;CEG ;B;S1;AGBLE                    
-5EME;CEG ;C;S1; --PAS DE PROF--         
-4EME;CEG ;A;S1;KPENGUIE                 
-4EME;CEG ;B;S1; --PAS DE PROF--         
-3EME;CEG ;A;S1;MOULOU                   
-3EME;CEG ;B;S1;ISSA                   
+6EME;CEG;A;S1;LARE
+6EME;CEG;B;S1;ADAM
+6EME;CEG;C;S1;BEYELI
+5EME;CEG;A;S1;ALAYI
+5EME;CEG;B;S1;AGBLE
+5EME;CEG;C;S1; --PAS DE PROF--
+4EME;CEG;A;S1;KPENGUIE
+4EME;CEG;B;S1; --PAS DE PROF--
+3EME;CEG;A;S1;MOULOU
+3EME;CEG;B;S1;ISSA
